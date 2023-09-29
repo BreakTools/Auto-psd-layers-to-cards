@@ -1,7 +1,6 @@
 import nuke
 from nukescripts import psd
 
-
 def convert_psd_to_cards():
     """
     Splits up the selected PSD read node, premultiplies the layers
@@ -12,8 +11,12 @@ def convert_psd_to_cards():
         nuke.message("You can only breakout one .PSD file at a time.")
         return
 
-    if nuke.selectedNode().knob("file_type").value() != "psd":
-        nuke.message("You can only breakout .PSD files.")
+    try:
+        if nuke.selectedNode().knob("file_type").value() != "psd":
+            nuke.message("You can only breakout .PSD read nodes.")
+            return
+    except AttributeError:
+        nuke.message("You can only breakout .PSD read nodes.")
         return
 
     psd_read_node = nuke.selectedNode()
