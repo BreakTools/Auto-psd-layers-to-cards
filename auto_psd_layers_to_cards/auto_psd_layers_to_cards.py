@@ -1,3 +1,8 @@
+"""
+Auto-psd-layers-to-cards V1.0, developed by Mervin van Brakel. 
+Made as requested by the talented concept artist/matte painter Kamran Khan.
+"""
+
 import nuke
 from nukescripts import psd
 
